@@ -1,0 +1,334 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Cooking_Conversions.Weight"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--Pivot Control-->
+        <phone:Pivot Title="GeekyPanda's Cooking Conversions">
+            <!--Pivot item one-->
+            <phone:PivotItem Header="flour">
+                <StackPanel>
+                    <Grid x:Name="Main" Background="Transparent">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!--Row one kiograms to pounds-->
+                        <StackPanel Grid.Row="2" Grid.Column="0">
+                            <TextBlock
+                                Style="{StaticResource PhoneTextLargeStyle}"
+                                Text="kilograms" 
+                                />
+                            <TextBlock x:Name="txbOutputKilograms" 
+                                       Style="{StaticResource PhoneTextLargeStyle}"
+                                       Text="0.00" 
+                                       />
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.Column="1">
+                            <TextBlock  
+                                       Style="{StaticResource PhoneTextLargeStyle}"
+                                       Text="pounds"
+                                       />
+                            <TextBlock x:Name="txbOutputPounds" 
+                                       Style="{StaticResource PhoneTextLargeStyle}"
+                                       Text="0.00" 
+                                       />
+                        </StackPanel>
+                        <Slider x:Name="sldKiloWeight" Grid.ColumnSpan="2" Grid.Row="3"
+                                MinWidth="450"
+                                HorizontalAlignment="Left"  VerticalAlignment="Top" 
+                                SmallChange="0.10" LargeChange="0.50" 
+                                Minimum="0.00" Maximum="5.00" 
+                                ValueChanged="Slider_ValueChanged" 
+                                BorderBrush="{StaticResource PhoneAccentBrush}"
+                                />
+                           <!--row three column 1-->                     
+                        <StackPanel Grid.Row ="0" Grid.Column="0">
+                            <TextBlock 
+                                       Style="{StaticResource PhoneTextLargeStyle}"
+                                       Text="grams to ..." />
+                            <TextBlock x:Name="txbOutputGrams" 
+                                       Style="{StaticResource PhoneTextLargeStyle}"
+                                       Text="0" />
+                        </StackPanel>
+                            <!--row three column two-->
+                        <StackPanel Grid.Row="0" Grid.Column="1">
+                            <TextBlock  
+                                       Style="{StaticResource PhoneTextLargeStyle}"
+                                       Text="ounces" />
+                            <TextBlock x:Name="txbOutputOunces" 
+                                       Style="{StaticResource PhoneTextLargeStyle}"
+                                       Text="0.00" />
+                            <TextBlock  
+                                       Style="{StaticResource PhoneTextLargeStyle}"
+                                       Text="pounds" />
+                            <TextBlock x:Name="txbOutputPoundsGrams" 
+                                       Style="{StaticResource PhoneTextLargeStyle}"
+                                       Text="0.00" />
+                            <TextBlock  
+                                       Style="{StaticResource PhoneTextLargeStyle}"
+                                       Text="cups"  />
+                            <TextBlock x:Name="txbOutputCups" 
+                                       Style="{StaticResource PhoneTextLargeStyle}"
+                                       Text="0.00" />
+                            <CheckBox x:Name="chxRounding"
+                                      IsChecked="True"
+                                      Content="rounding on" />
+                        </StackPanel>
+                   <!--row four the last slider-->
+                        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                        <Button x:Name="btnFlour02Minus" Grid.Column="0" Margin="0,0,0,20"
+                                HorizontalAlignment="Left" VerticalAlignment="Center"
+                                Tap="btnFlour02Minus_Tap"
+                                Content="-" />
+                        <Slider x:Name="sldWeight" Grid.Column="1"  
+                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                MinWidth="300"
+                                SmallChange="10." LargeChange="25" 
+                                Maximum="500" Minimum="0" 
+                                ValueChanged="Slider_ValueChanged" 
+                                BorderBrush="{StaticResource PhoneAccentBrush}"/>
+                        <Button x:Name="btnFlour02Plus" Grid.Column="2" Margin="0,0,0,20"
+                                HorizontalAlignment="Right" VerticalAlignment="Center"
+                                Tap="btnFlour02Plus_Tap"
+                                Content="+"/>
+                        </Grid>
+                    </Grid>
+                    
+                </StackPanel>               
+                
+            </phone:PivotItem>
+
+            <!--Pivot item two-->
+            <phone:PivotItem Header="fats">
+                
+                <StackPanel>
+                    <Grid x:Name="butterMain" Background="Transparent">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock x:Name="txbButter" Grid.Row="0" Grid.ColumnSpan="4" 
+                                   HorizontalAlignment="Center" 
+                                   Style="{StaticResource PhoneTextExtraLargeStyle}"
+                                   Text="butter"/>
+                        <!--Row Two-->
+                        <TextBlock x:Name="txbGrams" Grid.Row="1" Grid.Column="0" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="grams" />
+                        <TextBlock x:Name="txbCups" Grid.Row="1" Grid.Column="1" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="cups" />
+                        <TextBlock x:Name="txbOunces" Grid.Row="1" Grid.Column="2" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="ounces" />
+                        <TextBlock x:Name="txbPound" Grid.Row="1" Grid.Column="3" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="pounds" />
+                        <!--Row Three-->
+                        <TextBlock x:Name="txbOutputGramsButter" Grid.Row="2" Grid.Column="0" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="0" />
+                        <TextBlock x:Name="txbOutputCupsButter" Grid.Row="2" Grid.Column="1" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}"
+                                   Text="0" />
+                        <TextBlock x:Name="txbOutputOuncesButter" Grid.Row="2" Grid.Column="2" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}"
+                                   Text="0" />
+                        <TextBlock x:Name="txbOutputPoundButter" Grid.Row="2" Grid.Column="3" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="0" />
+                        <!--Row Four-->
+                        <Button x:Name="btnButterMinus" Grid.Row="3" Grid.Column="0" 
+                                HorizontalAlignment="Left" VerticalAlignment="Center"
+                                Tap="btnButterMinus_Tap"
+                                Content="-" />
+                        <Slider x:Name="sldButter" Grid.Row="3" Grid.ColumnSpan="4" Margin="55,25,55,0" 
+                                Maximum="500" Minimum="0" 
+                                ValueChanged="sldButter_ValueChanged"/>
+                        <Button x:Name="btnButterPlus" Grid.Row="3" Grid.Column="3" 
+                                HorizontalAlignment="Right" VerticalAlignment="Center"
+                                Tap="btnButterPlus_Tap"
+                                Content="+" />
+                    </Grid>
+                    <Grid x:Name="butterMain02" Background="Transparent">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                             </Grid.ColumnDefinitions>
+
+                            <!--Row one-->
+                        <TextBlock x:Name="txbVegOil" Grid.Row="0" Grid.ColumnSpan="4" 
+                                   HorizontalAlignment="Center" 
+                                   Style="{StaticResource PhoneTextExtraLargeStyle}"
+                                   Text="vegetable oil"/>
+                        <!--Row Two-->
+                        <TextBlock x:Name="txbGramsOil" Grid.Row="1" Grid.Column="0" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="grams" />
+                        <TextBlock x:Name="txbCupsOil" Grid.Row="1" Grid.Column="1" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="cups" />
+                        <TextBlock x:Name="txbOuncesOil" Grid.Row="1" Grid.Column="2" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}"
+                                   Text="ounces" />
+                        <!--Row Three-->
+                        <TextBlock x:Name="txbOutputGramsOil" Grid.Row="2" Grid.Column="0" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}"
+                                   Text="0" />
+                        <TextBlock x:Name="txbOutputCupsOil" Grid.Row="2" Grid.Column="1" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="0" />
+                        <TextBlock x:Name="txbOutputOuncesOil" Grid.Row="2" Grid.Column="2" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="0" />
+                        <!--Row Four-->
+                        <Button x:Name="btnOilMinus" Grid.Row="3" Grid.Column="0" 
+                                HorizontalAlignment="Left" VerticalAlignment="Center"
+                                Tap="btnOilMinus_Tap"
+                                Content="-" />
+                        <Slider x:Name="sldOil" Grid.Row="3" Grid.ColumnSpan="3" Margin="55,25,55,0" 
+                                VerticalAlignment="Center" 
+                                Maximum="500" Minimum="0" 
+                                ValueChanged="sldOil_ValueChanged"/>
+                        <Button x:Name="btnOilPlus" Grid.Row="3" Grid.Column="2" 
+                                HorizontalAlignment="Right" VerticalAlignment="Center"
+                                Tap="btnOilPlus_Tap"
+                                Content="+"/>
+                    </Grid>
+                    
+                </StackPanel>
+                
+            </phone:PivotItem>
+
+            <!--Pivot item three-->
+            <phone:PivotItem Header="sugar">
+
+                <StackPanel>
+                    <Grid x:Name="sugarMain" Background="Transparent">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock x:Name="txbSugar" Grid.Row="0" Grid.ColumnSpan="4" 
+                                   HorizontalAlignment="Center" 
+                                   Style="{StaticResource PhoneTextExtraLargeStyle}"
+                                   Text="sugar"/>
+                        <!--Row Two-->
+                        <TextBlock x:Name="txbGramsSugar" Grid.Row="1" Grid.Column="0" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="grams" />
+                        <TextBlock x:Name="txbCupsSugar" Grid.Row="1" Grid.Column="1" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="cups" />
+                        <TextBlock x:Name="txbOuncesSugar" Grid.Row="1" Grid.Column="2" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="ounces" />
+                        <TextBlock x:Name="txbPoundSugar" Grid.Row="1" Grid.Column="3" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="pounds" />
+                        <!--Row Three-->
+                        <TextBlock x:Name="txbOutputGramsSugar" Grid.Row="2" Grid.Column="0" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="0" />
+                        <TextBlock x:Name="txbOutputCupsSugar" Grid.Row="2" Grid.Column="1" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="0" />
+                        <TextBlock x:Name="txbOutputOuncesSugar" Grid.Row="2" Grid.Column="2" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="0" />
+                        <TextBlock x:Name="txbOutputPoundSugar" Grid.Row="2" Grid.Column="3" 
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource PhoneTextLargeStyle}" 
+                                   Text="0" />
+                        <!--Row Four-->
+                        <Button x:Name="btSugarMinus" Grid.Row="3" Grid.Column="0" 
+                                HorizontalAlignment="Left" VerticalAlignment="Center"
+                                Tap="btnSugarMinus_Tap"
+                                Content="-" />
+                        <Slider x:Name="sldSugar" Grid.Row="3" Grid.ColumnSpan="4" Margin="55,25,55,0" 
+                                Maximum="500" Minimum="0" 
+                                ValueChanged="sldSugar_ValueChanged"/>
+                        <Button x:Name="btnSugarPlus" Grid.Row="3" Grid.Column="3" 
+                                HorizontalAlignment="Right" VerticalAlignment="Center"
+                                Tap="btnSugarPlus_Tap"
+                                Content="+"/>
+                    </Grid>
+
+                </StackPanel>
+            </phone:PivotItem>
+            
+        </phone:Pivot>
+    </Grid>
+    
+</phone:PhoneApplicationPage>

@@ -1,0 +1,131 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Cooking_Conversions.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="GeekyPanda's Cooking Conversions" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+            <TextBlock Text="contents" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <ScrollViewer>
+                <StackPanel>
+                    <ScrollBar HorizontalAlignment="Right" Visibility="Visible" />
+                    <TextBlock x:Name="txtbBakingPowder" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Tap="txtbBakingPowder_Tap"
+                   Style="{StaticResource PhoneTextExtraLargeStyle}"
+                   Text="baking powder/soda" 
+                   />
+                    <TextBlock x:Name="txtbEggs" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Tap="txtbEggs_Tap"
+                   Style="{StaticResource PhoneTextExtraLargeStyle}"
+                   Text="eggs"  
+                   />
+                    <!--sub menu for eggs-->
+                    <StackPanel>
+                        <TextBlock x:Name="txbTimer" 
+                       HorizontalAlignment="left"
+                       Margin="40, 0, 0, 0"
+                       Style="{StaticResource PhoneTextLargeStyle}"
+                       Tap="txbTimerEgg_Tap"
+                       Text="timer" />
+                       
+                        <TextBlock x:Name="txbTechniques" 
+                       HorizontalAlignment="Left" 
+                       Margin="40, 0, 0, 0"
+                       Style="{StaticResource PhoneTextLargeStyle}"
+                       Tap="txbTechniques_Tap"
+                       Text="techniques"/>
+                        
+                        <TextBlock x:Name="txbTips" 
+                       HorizontalAlignment="Left" 
+                       Margin="40, 0, 0, 0"
+                       Style="{StaticResource PhoneTextLargeStyle}"
+                       Tap="txbTipsEgg_Tap"
+                       Text="tips"  />
+                    </StackPanel>
+                    <!--end sub menu  start main menu-->
+                    <TextBlock x:Name="txtbMeasurements" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Tap="txtbMeasurements_Tap"
+                   Style="{StaticResource PhoneTextExtraLargeStyle}"
+                   Text="measurements"
+                   />
+                    <!--<TextBlock x:Name="txbMeats"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Tap="txbMeats_Tap"
+                   Style="{StaticResource PhoneTextExtraLargeStyle}"
+                   Text="meats"
+                   />
+                    <StackPanel>
+                        <TextBlock x:Name="txbBeef" 
+                       HorizontalAlignment="Left" 
+                       Margin="40, 0, 0, 0"
+                       Style="{StaticResource PhoneTextLargeStyle}"
+                       Tap="txbBeef_Tap"
+                       Text="beef"  />
+                        <TextBlock x:Name="txbLamb" 
+                       HorizontalAlignment="Left" 
+                       Margin="40, 0, 0, 0"
+                       Style="{StaticResource PhoneTextLargeStyle}"
+                       Tap="txbLamb_Tap"
+                       Text="lamb"  />
+                        <TextBlock x:Name="txbPork" 
+                       HorizontalAlignment="Left" 
+                       Margin="40, 0, 0, 0"
+                       Style="{StaticResource PhoneTextLargeStyle}"
+                       Tap="txbPork_Tap"
+                       Text="pork"  />
+                        <TextBlock x:Name="txbPoultry" 
+                       HorizontalAlignment="Left" 
+                       Margin="40, 0, 0, 0"
+                       Style="{StaticResource PhoneTextLargeStyle}"
+                       Tap="txbPoultry_Tap"
+                       Text="poultry"  />
+                    </StackPanel>-->
+                    <TextBlock x:Name="txtbTemperature" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Tap="txtbTemperature_Tap"
+                   Style="{StaticResource PhoneTextExtraLargeStyle}"
+                   Text="temperature"
+                   />
+                    <TextBlock x:Name="txtbVolume" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                   Tap="txtbVolume_Tap"
+                   Style="{StaticResource PhoneTextExtraLargeStyle}"
+                   Text="volume"
+                   />
+                    <TextBlock x:Name="txtbWeight" 
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Tap="txtbWeight_Tap"
+                   Style="{StaticResource PhoneTextExtraLargeStyle}"
+                   Text="weight"  
+                   />
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

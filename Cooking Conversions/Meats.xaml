@@ -1,0 +1,125 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Cooking_Conversions.Meats"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--Pivot Control-->
+        <phone:Pivot Name="myPivot" Title="GeekyPanda's Cooking Conversions">
+             <!--Pivot item one-->
+            <phone:PivotItem Header="chicken">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0"
+                               HorizontalAlignment="Center"
+                               Style="{StaticResource PhoneTextLargeStyle}"
+                               Text="pounds/kilos"
+                               />
+                    <TextBlock Grid.Row="1" Grid.Column="0"
+                               HorizontalAlignment="Center"
+                               Style="{StaticResource PhoneTextLargeStyle}"
+                               Text="time (hh:mm)"
+                               />
+                    <TextBlock x:Name="txbChickenWeightOutput" Grid.Row="0" Grid.Column="1"
+                               HorizontalAlignment="Center"
+                               Style="{StaticResource PhoneTextLargeStyle}"
+                               Text="0.00/0.00"
+                               />
+                    <TextBlock x:Name="txbChickenTimeOutput" Grid.Row="1" Grid.Column="1"
+                               HorizontalAlignment="Center"
+                               Style="{StaticResource PhoneTextLargeStyle}"
+                               Text="0:00"
+                               />
+                    <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="2.5*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnChickenMinus" Grid.Column="0"
+                                Tap="btnChickenMinus_Tap"
+                                Content="-"
+                                />
+                        <Slider x:Name="sldMeatsChicken" Grid.Column="1"
+                                VerticalAlignment="Center" HorizontalAlignment="Center"
+                                Margin="0,15,0,-20"
+                                MinWidth="325"
+                                Minimum="0" Maximum="10"
+                                SmallChange="0.25" LargeChange="0.5"
+                                ValueChanged="sldMeatsChicken_ValueChanged"
+                                BorderBrush="{StaticResource PhoneAccentBrush}"
+                                />
+                        <Button x:Name="btnChickenPlus" Grid.Column="2"
+                                Tap="btnChickenPlus_Tap"
+                                Content="+"
+                                />
+                    </Grid>
+                    <StackPanel Grid.Row="3" Grid.ColumnSpan="2">
+                            <TextBlock
+                                FontWeight="Bold"
+                                Style="{StaticResource PhoneTextLargeStyle}"
+                                Text="cooking temperature"
+                                Tap="ChickenCooking_Tap"
+                                />
+                        <TextBlock x:Name="txbChickenCooking"
+                            TextWrapping="Wrap"
+                            Style="{StaticResource PhoneTextNormalStyle}"
+                            Text="350 degrees Fahrenheit or 180 degrees Celsius or Gas Mark 4"
+                            />
+                        <TextBlock
+                            FontWeight="Bold"
+                            Style="{StaticResource PhoneTextLargeStyle}"
+                            Text="when is a chicken cooked"
+                            Tap="ChickenCooked_Tap"
+                            />
+                        <TextBlock x:Name="txbChickenCooked01"
+                            TextWrapping="Wrap"
+                            Style="{StaticResource PhoneTextNormalStyle}"
+                            Text="If using a termometer pierce in the thigh and the meat should be 165 degrees Fahrenheit or 74 degrees Celsius."
+                            />
+                        <TextBlock x:Name="txbChickenCooked02"
+                            TextWrapping="Wrap"
+                            Style="{StaticResource PhoneTextNormalStyle}"
+                            Text="Otherwise pierce the thigh with a knife and if the juices run clear it is cooked through."
+                            />
+                                                        
+                        </StackPanel>
+                        <!--descriptions of safety with chicken-->
+                    
+                </Grid>
+            </phone:PivotItem>
+            <!--Pivot item two-->
+            <phone:PivotItem Header="duck">
+                <Grid>
+                </Grid>
+            </phone:PivotItem>
+            <!--Pivot item three-->
+            <phone:PivotItem Header="turkey">
+                <Grid>
+                </Grid>
+            </phone:PivotItem>
+        </phone:Pivot>
+    </Grid>
+    
+</phone:PhoneApplicationPage>

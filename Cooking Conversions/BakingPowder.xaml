@@ -1,0 +1,166 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Cooking_Conversions.BakingPowder"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--pivot control-->
+        <phone:Pivot Title="GeekyPanda's Cooking Conversions">
+            <phone:PivotItem Header="ratios">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.ColumnSpan="3"
+                                   TextAlignment="Center" 
+                                   Style="{StaticResource PhoneTextLargeStyle}"
+                                   Text="ratio to all purpose flour" />
+
+                    <TextBlock Grid.Row="1" Grid.Column="0"
+                               TextAlignment="Center"
+                               Style="{StaticResource PhoneTextNormalStyle}" 
+                               TextWrapping="Wrap" 
+                               Text="all purpose flour" />
+                    <TextBlock Grid.Row="1" Grid.Column="1" 
+                               TextAlignment="Center"
+                               TextWrapping="Wrap" 
+                               Style="{StaticResource PhoneTextNormalStyle}" 
+                               Text="Baking Powder (tsp)" />
+                    <TextBlock Grid.Row="1" Grid.Column="2" 
+                                TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               Style="{StaticResource PhoneTextNormalStyle}"
+                               Text="Salt 
+                                   (tsp)" />
+                    <!--conversion to grams-->
+                    <Grid Grid.Row="2" Grid.Column="0">  
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock
+                               Style="{StaticResource PhoneTextNormalStyle}"
+                               Text="grams:" />
+                            <TextBlock
+                               Style="{StaticResource PhoneTextNormalStyle}"
+                               Text="cups:" />
+                            <TextBlock 
+                               Style="{StaticResource PhoneTextNormalStyle}"
+                               Text="ounces:" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock x:Name="txbOutputAllPurposeFlour"
+                               Style="{StaticResource PhoneTextNormalStyle}"
+                               Text="0.00" />
+                            <TextBlock x:Name="txbOutputCupsToFlour" 
+                               Style="{StaticResource PhoneTextNormalStyle}"
+                               Text="0.00" />
+                            <TextBlock x:Name="txbOutputOuncesToFlour" 
+                               Style="{StaticResource PhoneTextNormalStyle}"
+                               Text="0.00" />
+                        </StackPanel>
+                    </Grid>
+                    <!--Baking Powder column-->
+                    <StackPanel Grid.Row="2" Grid.Column="1">
+                    <TextBlock x:Name="txbOutputBPowder"
+                               TextAlignment="Center"
+                               Style="{StaticResource PhoneTextNormalStyle}" 
+                               Text="0.00" />
+                    <TextBlock x:Name="txbOutputCupsToBPowder" 
+                               TextAlignment="Center"
+                               Style="{StaticResource PhoneTextNormalStyle}" 
+                               Text="0.00" /> 
+                    <TextBlock x:Name="txbOutputOuncesToBPowder" 
+                               TextAlignment="Center"
+                               Style="{StaticResource PhoneTextNormalStyle}" 
+                               Text="0.00" />    
+                    </StackPanel>
+                    
+                    <!--Salt column-->
+                    <StackPanel Grid.Row="2" Grid.Column="2">
+                    <TextBlock x:Name="txbOutputSalt" 
+                               TextAlignment="Center"
+                               Style="{StaticResource PhoneTextNormalStyle}" 
+                               Text="0.00" />
+                    <TextBlock x:Name="txbOutputCupsToSalt" 
+                               TextAlignment="Center"
+                               Style="{StaticResource PhoneTextNormalStyle}" 
+                               Text="0.00" /> 
+                    <TextBlock x:Name="txbOutputOuncesSalt" 
+                               TextAlignment="Center"
+                               Style="{StaticResource PhoneTextNormalStyle}" 
+                               Text="0.00" />    
+                    </StackPanel>
+
+                    <!--Row Three #3 Slider-->
+                    <Button x:Name="btnBPowderMinus" Grid.Row="3" Grid.Column="0" 
+                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                            Tap="btnBPowderMinus_Tap"
+                            Content="-" />
+                    <Slider x:Name="sldValue" Grid.Row="3" Grid.ColumnSpan="3" Margin="55, 22, 55, 0" 
+                            Minimum="0" Maximum="500" 
+                            SmallChange="1" LargeChange="10"
+                            ValueChanged="sldValue_ValueChanged" />
+                    <Button x:Name="btnBPowderPlus" Grid.Row="3" Grid.Column="3" 
+                            HorizontalAlignment="Right" VerticalAlignment="Center"
+                            Tap="btnBPowderPlus_Tap"
+                            Content="+"/>
+                </Grid>
+
+            </phone:PivotItem>
+            
+            <phone:PivotItem Header="tips">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"
+                               TextWrapping="Wrap"
+                               Style="{StaticResource PhoneTextLargeStyle}" 
+                               Text="Storage:"
+                               />
+                    <TextBlock x:Name="txbTipTwo" Grid.Row="1" 
+                               TextWrapping="Wrap"
+                               Style="{StaticResource PhoneTextNormalStyle}" 
+                               Text="Baking powder has a limited shelf life so check the use-by date before using it.
+                               To test if your baking powder still works use a little vinegar and watch it froth up.
+                               Fast froth means your baking powder is good. Then use the solution to clean your cooker top." />
+                    <TextBlock x:Name="txbTipThree" Grid.Row="2" 
+                               Style="{StaticResource PhoneTextLargeStyle}" 
+                               Text="Make your own baking powder:"/>
+                    <TextBlock Grid.Row="3"
+                               TextWrapping="Wrap"
+                               Style="{StaticResource PhoneTextNormalStyle}"
+                               Text="Combine 15ml/1tbsp bicarbonate of soda with 30ml/2tbsp cream of tartar." />                    
+                </Grid>
+                </phone:PivotItem>
+       </phone:Pivot>
+            
+        </Grid>
+ 
+
+</phone:PhoneApplicationPage>

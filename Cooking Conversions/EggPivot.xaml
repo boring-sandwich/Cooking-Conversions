@@ -1,0 +1,219 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Cooking_Conversions.Eggies.EggPivot"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--Pivot Control-->
+        <phone:Pivot Name="myPivot" Title="GeekyPanda's Cooking Conversions" Grid.Row="0" Grid.ColumnSpan="2">
+            <!--Pivot item one-->
+            <phone:PivotItem Header="egg timer">
+                <ScrollViewer Grid.RowSpan="11" Grid.ColumnSpan="4">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+
+                        </Grid.ColumnDefinitions>
+                        <ScrollBar Grid.RowSpan="11" Grid.Column="3"></ScrollBar>
+
+                        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" 
+                               Style="{StaticResource PhoneTextLargeStyle}"
+                               Text="soft boiled"
+                               Tap="txbSoftBoiled_Tap"
+                               />
+                        <!--radio button selection-->
+                        <RadioButton x:Name="radBoiledSoft" Grid.Row="1" Grid.Column="0"
+                                 HorizontalAlignment="Right"
+                                 Tap="radioEggTimerSelection_Tap"
+                                 Content="soft"
+                                 />
+                        <RadioButton x:Name="radSoftBoiledCustom" Grid.Row="1" Grid.Column="1"
+                                 HorizontalAlignment="Left" 
+                                 Tap="radioEggTimerSelection_Tap"
+                                 Content="custom"
+                                 />
+                        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" 
+                               Style="{StaticResource PhoneTextLargeStyle}"
+                               Text="hard boiled"
+                               Tap="txbHardBoiled_Tap"
+                               />
+                        <!--radio button selection-->
+                        <RadioButton x:Name="radBoiledHard" Grid.Row="3" Grid.Column="0"
+                                 HorizontalAlignment="Right" 
+                                 Tap="radioEggTimerSelection_Tap"
+                                 Content="hard"
+                                 />
+                        <RadioButton x:Name="radHardBoiledCustom" Grid.Row="3" Grid.Column="1"
+                                 HorizontalAlignment="Left" 
+                                 Tap="radioEggTimerSelection_Tap"
+                                 Content="custom"
+                                 />
+
+                        <TextBlock Grid.Row="4" Grid.ColumnSpan="3"
+                        Style="{StaticResource PhoneTextLargeStyle}"
+                        Text="poached"
+                        Tap="txbPoachedTap"
+                        />
+                        <RadioButton x:Name="radPoachedStandard" Grid.Row="5" Grid.Column="0"
+                                 HorizontalAlignment="Right" 
+                                 Tap="radioEggTimerSelection_Tap"
+                                 Content="standard"
+                                 />
+                        <RadioButton x:Name="radPoachedCustom" Grid.Row="5" Grid.Column="1"
+                                 HorizontalAlignment="Left" 
+                                 Tap="radioEggTimerSelection_Tap"
+                                 Content="custom"
+                                 />
+
+                        <!--timer-->
+                        <TextBlock x:Name="txbBoiledTimer" Grid.Row="6" Grid.ColumnSpan="3"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   Style="{StaticResource PhoneTextHugeStyle}"
+                   />
+                        <!--buttons-->
+                        <StackPanel Grid.Row="8" Grid.ColumnSpan="2">
+                        <Button x:Name="btnBoiledReset" 
+                           Margin="12"
+                Content="go" Click="btnBoiledReset_Click"
+                />
+                        <TextBlock
+                            Style="{StaticResource PhoneTextSmallStyle}"
+                            HorizontalAlignment="Center"
+                            Text="go to settings to change the custom timers"
+                            />
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+
+            </phone:PivotItem>
+
+            <!--Pivot item two-->
+            <phone:PivotItem Header="techniques" TabIndex="0">
+                <ScrollViewer>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="4*"/>
+                        </Grid.RowDefinitions>
+                       
+                        <StackPanel Grid.Row="0">
+                            <TextBlock 
+                               Style="{StaticResource PhoneTextLargeStyle}"
+                               Text="boiled"
+                               Tap="txbBoiledInstructionsVisibility_Tap"
+                               />
+                            <TextBlock x:Name="txbBoiledDescription"
+                                   TextWrapping="Wrap"
+                                   Style="{StaticResource PhoneTextNormalStyle}"
+                                   Text=""
+                                   />
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Row="1">
+                            <TextBlock 
+                        Style="{StaticResource PhoneTextLargeStyle}"
+                        Text="fried"
+                        Tap="txbFriedInstructionsVisibility_Tap"
+                            />
+                            <TextBlock x:Name="txbFriedDescription" 
+                               TextWrapping="Wrap"
+                               Style="{StaticResource PhoneTextNormalStyle}"
+                               Text=""
+                               />
+                        </StackPanel>
+                       
+                        <StackPanel Grid.Row="2">
+                            <TextBlock
+                            Style="{StaticResource PhoneTextLargeStyle}"
+                            Text="poached"
+                            Tap="txbPoachedInstructionsVisibility_Tap"
+                            />
+                            <TextBlock x:Name="txbPoachedDescription"
+                                   TextWrapping="Wrap"
+                                   Style="{StaticResource PhoneTextNormalStyle}"
+                                   Text=""
+                                   />
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Row="3">
+                            <TextBlock
+                            Style="{StaticResource PhoneTextLargeStyle}"
+                            Text="scrambled"
+                            Tap="txbScrambledInstructionsVisibility_Tap"
+                            />
+                            <TextBlock x:Name="txbScrambledDescription"
+                                   TextWrapping="Wrap"
+                                   Style="{StaticResource PhoneTextNormalStyle}"
+                                   Text=""
+                                   />
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+            </phone:PivotItem>
+
+            <!--Pivot item three-->
+            <phone:PivotItem Header="tips">
+                <StackPanel>
+                    <Grid>
+                        <TextBlock x:Name="txbEggsHeading01" Margin="12, 10, 0, 0" TextAlignment="Left" Style="{StaticResource PhoneTextLargeStyle}" 
+                           Text="knowing when an egg is bad"  />
+                        <Grid x:Name="gridEggs01">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock x:Name="txbEggsTipOneMain" Margin="12, 60, 0, 0" Grid.Column="0" TextWrapping="Wrap" TextAlignment="Left" Style="{StaticResource PhoneTextNormalStyle}"
+                                       Text="Place an egg in a bowl of water (cold or room temperature) and if the egg floats DO NOT USE. If the egg sinks then it is fine." />
+
+                        </Grid>
+                        <Grid x:Name="gridEggs02">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock x:Name="txbEggsHeading02" Margin="12, 250, 0, 0" Grid.Column="0" Grid.ColumnSpan="2" TextAlignment="Left" Style="{StaticResource PhoneTextLargeStyle}"
+                               Text="how to keep eggs fresh" />
+                            <TextBlock x:Name="txbEggsTipTwoMain" Margin="12, 300, 0, 0" Grid.Column="0" Grid.ColumnSpan="2" TextAlignment="Left" Style="{StaticResource PhoneTextNormalStyle}" TextWrapping="Wrap"
+                                       Text="Eggs are best kept in the refridgerator. This will make the eggs last longer and maintains the taste.
+                                       This also helps prevent salmonella growth which can cause food poisioning." />
+                            <Image x:Name="imgEggBowl" Source="/Assets/EggBowl.png" Grid.Column="1" Stretch="Uniform" Margin="0,72,10,206"/>
+
+                        </Grid>
+                    </Grid>
+                </StackPanel>
+
+            </phone:PivotItem>
+        </phone:Pivot>
+
+    </Grid>
+
+</phone:PhoneApplicationPage>
